@@ -1,6 +1,22 @@
-import React from 'react';
-import './App.scss';
+import React, { Suspense } from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-const App = () => <div className="red">React App</div>;
+import Header from './shared/components/Header';
+import HomePage from './modules/Home';
+
+const App = () => {
+  return (
+    <>
+      <Suspense fallback={<div>Loading...</div>}>
+        <BrowserRouter>
+          <Header />
+          <Switch>
+            <Route path="/" exact component={HomePage} />
+          </Switch>
+        </BrowserRouter>
+      </Suspense>
+    </>
+  );
+};
 
 export default App;

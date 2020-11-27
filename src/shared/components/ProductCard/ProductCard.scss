@@ -1,0 +1,15 @@
+@import '../../styles/global.scss';
+
+.card {
+  img {
+    height: 200px;
+    width: 200px;
+    margin: 10px auto;
+  }
+  .card-title {
+    width: 250px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
