@@ -1,6 +1,10 @@
 @import '../../styles/global.scss';
 
 .card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0px !important;
+  @extend FontOpenSans;
   img {
     height: 200px;
     width: 200px;
@@ -11,5 +15,24 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+  }
+  h5,
+  h6 {
+    font-weight: 600;
+    color: #4a4848;
+    font-size: 16px;
+  }
+  h6 {
+    margin-top: 15px;
+  }
+  p {
+    width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    word-break: break-all;
+    font-size: 14px;
   }
 }

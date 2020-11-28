@@ -20,6 +20,14 @@ body {
   @extend verticleCenter;
 }
 
+.mg-top-10 {
+  @include marginTop(10px);
+}
+
+.mg-bottom-10 {
+  @include marginBotton(10px);
+}
+
 .mg-top-20 {
   @include marginTop(20px);
 }
@@ -44,13 +52,6 @@ body {
   @include clearfix();
 }
 
-.divide-section-50p {
-  position: relative;
-  width: 50%;
-  float: left;
-  display: inline-block;
-}
-
 .section-container {
   padding: 0.5rem 1rem;
 }
@@ -64,4 +65,8 @@ body {
     letter-spacing: 0.15em;
     font-size: 1.8em;
   }
+}
+
+.opensans-family {
+  @extend FontOpenSans;
 }

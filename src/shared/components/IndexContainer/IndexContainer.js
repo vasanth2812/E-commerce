@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../../styles/global.scss';
 
 const IndexContainer = ({ title, children }) => {
   return (
     <>
       <div className="header-wrap">
-        <h3>{title}</h3>
+        <h3 className="opensans-family">{title}</h3>
       </div>
       <div>{children}</div>
     </>
