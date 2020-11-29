@@ -1,9 +1,20 @@
 import React from 'react';
-import { Card, CardImg, CardBody, CardTitle, CardSubtitle } from 'reactstrap';
+import {
+  Card,
+  CardImg,
+  CardBody,
+  CardTitle,
+  CardSubtitle,
+  Button,
+} from 'reactstrap';
 import PropTypes from 'prop-types';
 import './ProductCard.scss';
 
-const ProductCard = ({ data }) => {
+const ProductCard = ({ data, addWhislist }) => {
+  const addWhislistClick = (id) => {
+    addWhislist(id);
+  };
+
   return (
     <>
       <div>
@@ -26,13 +37,23 @@ const ProductCard = ({ data }) => {
               </CardSubtitle>
             ) : null}
             {!data.offer && data.price ? (
-              <CardSubtitle
-                tag="h6"
-                className="mb-2 mg-top-10"
-                title={data.title}
-              >
-                {`${data.price} ₹`}
-              </CardSubtitle>
+              <>
+                <CardSubtitle
+                  tag="h6"
+                  className="mb-2 mg-top-10 section-30-percent"
+                  title={data.price}
+                >
+                  {`${data.price} ₹`}
+                </CardSubtitle>
+                <div className="section-70-percent">
+                  <Button
+                    className="prd-btn"
+                    onClick={() => addWhislistClick(data.id)}
+                  >
+                    Add Whislist
+                  </Button>
+                </div>
+              </>
             ) : null}
           </CardBody>
         </Card>
@@ -43,6 +64,7 @@ const ProductCard = ({ data }) => {
 
 ProductCard.propTypes = {
   data: PropTypes.shape({
+    id: PropTypes.number,
     image: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     offer: PropTypes.bool,
@@ -50,6 +72,7 @@ ProductCard.propTypes = {
     price: PropTypes.number,
     description: PropTypes.string,
   }).isRequired,
+  addWhislist: PropTypes.func.isRequired,
 };
 
 export default ProductCard;

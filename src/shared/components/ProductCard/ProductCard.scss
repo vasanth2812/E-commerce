@@ -35,4 +35,16 @@
     word-break: break-all;
     font-size: 14px;
   }
+  .prd-btn {
+    border-radius: 0px !important;
+    background-color: $addbuttoncolor;
+    border-color: $addbuttoncolor;
+    font-size: 12px;
+    width: 100%;
+    font-weight: 700;
+    &:hover {
+      background-color: $addbuttoncolor;
+      border-color: $addbuttoncolor;
+    }
+  }
 }

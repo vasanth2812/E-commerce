@@ -24,6 +24,9 @@ body {
   @include marginTop(10px);
 }
 
+.mg-top-17 {
+  @include marginTop(17px);
+}
 .mg-bottom-10 {
   @include marginBotton(10px);
 }
@@ -69,4 +72,20 @@ body {
 
 .opensans-family {
   @extend FontOpenSans;
+}
+
+.section-70-percent {
+  position: relative;
+  width: 70%;
+  display: inline-block;
+  float: left;
+  overflow: hidden;
+}
+
+.section-30-percent {
+  position: relative;
+  width: 30%;
+  display: inline-block;
+  float: left;
+  overflow: hidden;
 }

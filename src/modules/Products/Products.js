@@ -28,6 +28,9 @@ const Products = () => {
     setProducts(stateProductList);
   }, [stateProductList]);
 
+  const addWhislist = (id) => {
+    console.log(id);
+  };
   const sort = (sortValue) => {
     const sortProducts = helper.sort(products, 'price', sortValue);
     setProducts(() => [...sortProducts]);
@@ -39,7 +42,7 @@ const Products = () => {
         key={product.id}
         className="col-sm-12 col-md-4 col-lg-3 col-xs-3 mg-bottom-10"
       >
-        <ProductCard data={product} />
+        <ProductCard data={product} addWhislist={addWhislist} />
       </div>
     );
   });

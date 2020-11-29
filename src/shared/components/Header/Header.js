@@ -7,7 +7,10 @@ import {
   Nav,
   NavItem,
   NavLink,
+  NavbarText,
 } from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart, faClipboard } from '@fortawesome/free-solid-svg-icons';
 import './Header.scss';
 
 const Header = () => {
@@ -32,6 +35,20 @@ const Header = () => {
               <NavLink href="/about">About</NavLink>
             </NavItem>
           </Nav>
+          <NavbarText>
+            <Nav>
+              <NavItem>
+                <NavLink href="/Whishlist">
+                  <FontAwesomeIcon icon={faClipboard} />
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="/cart">
+                  <FontAwesomeIcon icon={faShoppingCart} />
+                </NavLink>
+              </NavItem>
+            </Nav>
+          </NavbarText>
         </Collapse>
       </Navbar>
     </div>
