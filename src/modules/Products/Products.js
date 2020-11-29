@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import fetchProducts from '../../actions';
+import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import SkeletonProduct from '../../shared/components/Skeleton/SkeletonProduct';
 import ProductCard from '../../shared/components/ProductCard';
 import Error from '../../shared/components/Errors';
@@ -10,17 +10,8 @@ import helper from '../../shared/helper';
 import { allproductsSelector } from '../../reducers/products';
 import './Products.scss';
 
-const Products = () => {
+const Products = ({ errors }) => {
   const [products, setProducts] = useState([]);
-
-  const [errors, setErrors] = useState(false);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchProducts()).catch(() => {
-      setErrors(true);
-    });
-  }, [dispatch]);
 
   const stateProductList = useSelector((state) => allproductsSelector(state));
 
@@ -70,6 +61,10 @@ const Products = () => {
       </div>
     </>
   );
+};
+
+Products.propTypes = {
+  errors: PropTypes.bool.isRequired,
 };
 
 export default Products;

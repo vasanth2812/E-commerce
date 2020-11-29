@@ -1,4 +1,30 @@
+@import '../../styles/global.scss';
+
 .bg-light {
-  background-color: #cdd0d2 !important;
+  background-color: $headerBackgroundColor !important;
   font-family: 'Open Sans', sans-serif;
+  svg {
+    width: 2.125em !important;
+    color: $headerTextColor;
+  }
+  .cart-product-count {
+    position: relative;
+    overflow: hidden;
+    .cart-bubble {
+      position: absolute;
+      top: 3px;
+      right: 14px;
+      color: $textWhiteColor;
+      background: $addbuttoncolor;
+      border-radius: 50%;
+      height: 17px;
+      width: 15px;
+      span {
+        font-size: 12px;
+        position: absolute;
+        right: 5px;
+        font-weight: 700;
+      }
+    }
+  }
 }

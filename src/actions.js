@@ -1,6 +1,6 @@
 import { normalize } from 'normalizr';
 import api from './services/api';
-import { PRODUCT_FETCHED } from './types';
+import { PRODUCT_FETCHED, CARTPRODUCTS_FETCHED } from './types';
 import productSchema from './Schemas';
 
 const productFetched = (data) => ({
@@ -8,11 +8,21 @@ const productFetched = (data) => ({
   data,
 });
 
-const fetchProducts = () => (dispatch) =>
+const cartProductFetched = (data) => ({
+  type: CARTPRODUCTS_FETCHED,
+  data,
+});
+
+export const fetchProducts = () => (dispatch) =>
   api
     .products()
     .then((products) =>
       dispatch(productFetched(normalize(products, [productSchema])))
     );
 
-export default fetchProducts;
+export const fetchCartProducts = () => (dispatch) =>
+  api
+    .cartProducts()
+    .then((products) =>
+      dispatch(cartProductFetched(normalize(products, [productSchema])))
+    );

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import {
   Collapse,
   Navbar,
@@ -11,10 +12,21 @@ import {
 } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faClipboard } from '@fortawesome/free-solid-svg-icons';
+import { allcartProducts } from '../../../reducers/cartProducts';
 import './Header.scss';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [count, setCount] = useState(0);
+
+  const stateProductList = useSelector((state) => allcartProducts(state));
+  useEffect(() => {
+    const productCount =
+      stateProductList &&
+      stateProductList[0].products &&
+      stateProductList[0].products.length;
+    setCount(productCount);
+  }, [stateProductList.products]);
 
   const toggle = () => setIsOpen(!isOpen);
 
@@ -42,8 +54,11 @@ const Header = () => {
                   <FontAwesomeIcon icon={faClipboard} />
                 </NavLink>
               </NavItem>
-              <NavItem>
+              <NavItem className="cart-product-count">
                 <NavLink href="/cart">
+                  <span className="cart-bubble">
+                    <span>{count}</span>
+                  </span>
                   <FontAwesomeIcon icon={faShoppingCart} />
                 </NavLink>
               </NavItem>
