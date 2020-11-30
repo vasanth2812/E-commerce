@@ -11,7 +11,7 @@ import {
   NavbarText,
 } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart, faClipboard } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { allcartProducts } from '../../../reducers/cartProducts';
 import './Header.scss';
 
@@ -40,17 +40,17 @@ const Header = () => {
             <NavItem>
               <NavLink href="/products">Products</NavLink>
             </NavItem>
-            <NavItem>
+            {/* <NavItem>
               <NavLink href="/about">About</NavLink>
-            </NavItem>
+            </NavItem> */}
           </Nav>
           <NavbarText>
             <Nav>
-              <NavItem>
+              {/* <NavItem>
                 <NavLink href="/Whishlist">
                   <FontAwesomeIcon icon={faClipboard} />
                 </NavLink>
-              </NavItem>
+              </NavItem> */}
               <NavItem className="cart-product-count">
                 <NavLink href="/cart">
                   <span className="cart-bubble">
