@@ -35,3 +35,6 @@ export const fetchCartProducts = () => (dispatch) =>
     .then((products) =>
       dispatch(cartProductFetched(normalize(products, [cartProductSchema])))
     );
+
+export const addCart = (product) =>
+  addCartProduct(normalize(product, [cartProductSchema]));

@@ -15,5 +15,20 @@
     width: 30%;
     float: left;
     display: inline-block;
+    .product-Billing-main {
+      border: 1px solid $borderColor;
+      margin: 0px 20px;
+      padding: 10px 20px;
+      .checkout-btn {
+        border-radius: 0px !important;
+        background-color: $addbuttoncolor;
+        border-color: $addbuttoncolor;
+        font-size: 12px;
+        width: 100%;
+        font-weight: 700;
+        height: 25px;
+        color: $textWhiteColor;
+      }
+    }
   }
 }

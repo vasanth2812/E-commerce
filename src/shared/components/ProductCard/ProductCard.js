@@ -50,7 +50,7 @@ const ProductCard = ({ data, addWhislist }) => {
                     className="prd-btn"
                     onClick={() => addWhislistClick(data.id)}
                   >
-                    Add Whislist
+                    Add Cart
                   </Button>
                 </div>
               </>

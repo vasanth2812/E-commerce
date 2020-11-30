@@ -10,7 +10,7 @@ import helper from '../../shared/helper';
 import { allproductsSelector } from '../../reducers/products';
 import './Products.scss';
 import api from '../../services/api';
-import { addCartProduct } from '../../actions';
+import { addCart } from '../../actions';
 
 const Products = ({ errors }) => {
   const dispatch = useDispatch();
@@ -26,7 +26,6 @@ const Products = ({ errors }) => {
   const addWhislist = (id) => {
     const data = {
       userId: userid,
-      date: `2020-03-01`,
       products: [
         {
           productId: id,
@@ -37,8 +36,7 @@ const Products = ({ errors }) => {
     api
       .addCart(data)
       .then(() => {
-        dispatch(addCartProduct(data.products));
-        throw new Error('');
+        dispatch(addCart(data.products));
       })
       .catch(() => {
         setCartError(true);

@@ -2,6 +2,7 @@
   "baseurl": "https://fakestoreapi.com",
   "userid": 2,
   "errorMessage": "Something went Wrong!.",
+  "addProductInfo": "Add products to the cart",
   "carouselImage": [
     {
       "src": "1",

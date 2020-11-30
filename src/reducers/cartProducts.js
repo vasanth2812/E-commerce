@@ -8,7 +8,7 @@ export function cartProducts(state = {}, action = {}) {
     case CARTPRODUCTS_FETCHED:
       return { ...state, ...action.data.entities.products };
     case ADD_CARTPRODUCTS: {
-      return { ...state };
+      return { ...state, ...action.data.entities.products };
     }
     default:
       return state;
