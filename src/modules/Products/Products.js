@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import SkeletonProduct from '../../shared/components/Skeleton/SkeletonProduct';
 import ProductCard from '../../shared/components/ProductCard';
-import Error from '../../shared/components/Errors';
-import { errorMessage } from '../../constant.json';
+import Alert from '../../shared/components/Alerts/Alert';
+import { errorMessage, userid } from '../../constant.json';
 import Filter from './Filter';
 import helper from '../../shared/helper';
 import { allproductsSelector } from '../../reducers/products';
 import './Products.scss';
+import api from '../../services/api';
+import { addCartProduct } from '../../actions';
 
 const Products = ({ errors }) => {
+  const dispatch = useDispatch();
   const [products, setProducts] = useState([]);
+  const [carterror, setCartError] = useState(false);
 
   const stateProductList = useSelector((state) => allproductsSelector(state));
 
@@ -20,7 +24,25 @@ const Products = ({ errors }) => {
   }, [stateProductList]);
 
   const addWhislist = (id) => {
-    console.log(id);
+    const data = {
+      userId: userid,
+      date: `2020-03-01`,
+      products: [
+        {
+          productId: id,
+          quantity: 1,
+        },
+      ],
+    };
+    api
+      .addCart(data)
+      .then(() => {
+        dispatch(addCartProduct(data.products));
+        throw new Error('');
+      })
+      .catch(() => {
+        setCartError(true);
+      });
   };
   const sort = (sortValue) => {
     const sortProducts = helper.sort(products, 'price', sortValue);
@@ -47,7 +69,7 @@ const Products = ({ errors }) => {
   return (
     <>
       <div className="section-container">
-        {errors && <Error title={errorMessage} />}
+        {(errors || carterror) && <Alert title={errorMessage} color="danger" />}
         <>
           {!!products.length && (
             <div className="mg-top-20 mg-bottom-20">

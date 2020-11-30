@@ -1,5 +1,6 @@
 {
   "baseurl": "https://fakestoreapi.com",
+  "userid": 2,
   "errorMessage": "Something went Wrong!.",
   "carouselImage": [
     {

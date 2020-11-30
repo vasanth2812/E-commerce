@@ -4,17 +4,18 @@ import { useSelector } from 'react-redux';
 import CartProduct from '../../shared/components/CartProduct';
 import { errorMessage } from '../../constant.json';
 import { productSelector } from '../../reducers/products';
-import Error from '../../shared/components/Errors';
+import Alert from '../../shared/components/Alerts/Alert';
+import './CartProducts.scss';
 
 const CartProducts = ({ errors }) => {
-  const [cartProductsIds, setCartProductsIds] = useState([]);
+  const [cartProducts, setCartProducts] = useState([]);
   const stateProductList = useSelector((state) => productSelector(state));
 
   useEffect(() => {
-    setCartProductsIds(stateProductList);
+    setCartProducts(stateProductList);
   }, [stateProductList]);
 
-  const products = cartProductsIds.map((data) => (
+  const products = cartProducts.map((data) => (
     <div key={data.id}>
       <CartProduct data={data} />
     </div>
@@ -23,8 +24,11 @@ const CartProducts = ({ errors }) => {
   return (
     <>
       <div className="section-container">
-        {errors && <Error title={errorMessage} />}
-        {products}
+        {errors && <Alert title={errorMessage} color="danger" />}
+        <div className="cart-products">
+          <div className="product-list-wrap">{products}</div>
+          <div className="product-Billing-wrap" />
+        </div>
       </div>
     </>
   );

@@ -21,12 +21,9 @@ const Header = () => {
 
   const stateProductList = useSelector((state) => allcartProducts(state));
   useEffect(() => {
-    const productCount =
-      stateProductList &&
-      stateProductList[0].products &&
-      stateProductList[0].products.length;
+    const productCount = stateProductList ? stateProductList.length : 0;
     setCount(productCount);
-  }, [stateProductList.products]);
+  }, [stateProductList]);
 
   const toggle = () => setIsOpen(!isOpen);
 

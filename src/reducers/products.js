@@ -24,7 +24,7 @@ export const productSelector = createSelector(
   productsSelector,
   allcartProducts,
   (productsHash, cartProducts) => {
-    return cartProducts[0].products.map((product) => {
+    return cartProducts.map((product) => {
       return {
         ...productsHash[product.productId],
         quantity: product.quantity,

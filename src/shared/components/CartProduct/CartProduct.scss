@@ -1,1 +1,39 @@
 @import '../../styles/global.scss';
+
+.cart-product-wrap {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  background-color: #fff;
+  padding: 20px;
+  margin: 10px 0px;
+  .cart-product-main {
+    .cart-left-wrap {
+      width: 25%;
+      float: left;
+      display: inline-block;
+      img {
+        height: 100px;
+        width: 100px;
+      }
+    }
+    .cart-right-wrap {
+      width: 75%;
+      float: left;
+      display: inline-block;
+      .total-price-wrap {
+        margin-top: 10px;
+      }
+    }
+  }
+}
+
+.select-wrap-field {
+  width: 25%;
+  border: 1px solid #908c8c;
+  padding: 5px;
+  font-size: 18px;
+  border-radius: 0px;
+  outline: 0;
+}

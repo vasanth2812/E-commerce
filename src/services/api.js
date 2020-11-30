@@ -1,9 +1,16 @@
 import axios from 'axios';
-import { baseurl } from '../constant.json';
+import { baseurl, userid } from '../constant.json';
 
 export default {
-  products: () =>
-    axios.get(`${baseurl}/products`).then((products) => products.data),
+  products: () => axios.get(`${baseurl}/products`).then((res) => res.data),
   cartProducts: () =>
-    axios.get(`${baseurl}/carts//user/2`).then((products) => products.data),
+    axios
+      .get(`${baseurl}/carts/user/${userid}`)
+      .then((res) => res.data[0].products),
+  addCart: (data) =>
+    axios
+      .post(`${baseurl}/carts`, {
+        data,
+      })
+      .then((res) => res.data),
 };

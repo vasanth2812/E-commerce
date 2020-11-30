@@ -1,1 +1,19 @@
 @import '../../shared/styles/global.scss';
+
+.cart-products {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  .product-list-wrap {
+    position: relative;
+    width: 70%;
+    float: left;
+    display: inline-block;
+  }
+  .product-Billing-wrap {
+    position: relative;
+    width: 30%;
+    float: left;
+    display: inline-block;
+  }
+}

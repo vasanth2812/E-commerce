@@ -1,5 +1,13 @@
 import { schema } from 'normalizr';
 
-const productSchema = new schema.Entity('products', {}, { idAttribute: 'id' });
+export const productSchema = new schema.Entity(
+  'products',
+  {},
+  { idAttribute: 'id' }
+);
 
-export default productSchema;
+export const cartProductSchema = new schema.Entity(
+  'products',
+  {},
+  { idAttribute: 'productId' }
+);
