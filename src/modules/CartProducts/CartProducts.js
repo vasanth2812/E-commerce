@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import CartProduct from '../../shared/components/CartProduct';
 import { errorMessage, addProductInfo } from '../../constant.json';
 import { productSelector } from '../../reducers/products';
 import Alert from '../../shared/components/Alerts/Alert';
 import './CartProducts.scss';
+import { addCart } from '../../actions';
 
 const CartProducts = ({ errors }) => {
+  const dispatch = useDispatch();
   const [cartProducts, setCartProducts] = useState([]);
   const stateProductList = useSelector((state) => productSelector(state));
 
@@ -15,9 +17,13 @@ const CartProducts = ({ errors }) => {
     setCartProducts(stateProductList);
   }, [stateProductList]);
 
+  const selectQuantity = (productQuantity) => {
+    dispatch(addCart([productQuantity]));
+  };
+
   const products = cartProducts.map((data) => (
     <div key={data.id}>
-      <CartProduct data={data} />
+      <CartProduct data={data} selectQuantity={selectQuantity} />
     </div>
   ));
 

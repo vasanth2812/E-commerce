@@ -21,8 +21,6 @@ const Products = ({ errors }) => {
   const stateProductList = useSelector((state) => allproductsSelector(state));
   const stateCartProducts = useSelector((state) => allCartProductsId(state));
 
-  console.log(stateCartProducts);
-
   useEffect(() => {
     setProducts(stateProductList);
   }, [stateProductList]);
