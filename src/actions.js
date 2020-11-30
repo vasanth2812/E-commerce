@@ -4,6 +4,7 @@ import {
   PRODUCT_FETCHED,
   CARTPRODUCTS_FETCHED,
   ADD_CARTPRODUCTS,
+  REMOVE_CARTPRODUCTS,
 } from './types';
 import { productSchema, cartProductSchema } from './Schemas';
 
@@ -17,8 +18,13 @@ const cartProductFetched = (data) => ({
   data,
 });
 
-export const addCartProduct = (data) => ({
+const addCartProduct = (data) => ({
   type: ADD_CARTPRODUCTS,
+  data,
+});
+
+const removeCartProduct = (data) => ({
+  type: REMOVE_CARTPRODUCTS,
   data,
 });
 
@@ -38,3 +44,5 @@ export const fetchCartProducts = () => (dispatch) =>
 
 export const addCart = (product) =>
   addCartProduct(normalize(product, [cartProductSchema]));
+
+export const removeCart = (data) => removeCartProduct(data);

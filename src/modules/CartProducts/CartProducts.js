@@ -6,7 +6,7 @@ import { errorMessage, addProductInfo } from '../../constant.json';
 import { productSelector } from '../../reducers/products';
 import Alert from '../../shared/components/Alerts/Alert';
 import './CartProducts.scss';
-import { addCart } from '../../actions';
+import { addCart, removeCart } from '../../actions';
 
 const CartProducts = ({ errors }) => {
   const dispatch = useDispatch();
@@ -18,7 +18,11 @@ const CartProducts = ({ errors }) => {
   }, [stateProductList]);
 
   const selectQuantity = (productQuantity) => {
-    dispatch(addCart([productQuantity]));
+    if (productQuantity.quantity) {
+      dispatch(addCart([productQuantity]));
+    } else {
+      dispatch(removeCart(productQuantity));
+    }
   };
 
   const products = cartProducts.map((data) => (

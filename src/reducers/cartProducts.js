@@ -1,6 +1,10 @@
 import { createSelector } from 'reselect';
 
-import { CARTPRODUCTS_FETCHED, ADD_CARTPRODUCTS } from '../types';
+import {
+  CARTPRODUCTS_FETCHED,
+  ADD_CARTPRODUCTS,
+  REMOVE_CARTPRODUCTS,
+} from '../types';
 
 // REDUCER
 export function cartProducts(state = {}, action = {}) {
@@ -9,6 +13,13 @@ export function cartProducts(state = {}, action = {}) {
       return { ...state, ...action.data.entities.products };
     case ADD_CARTPRODUCTS: {
       return { ...state, ...action.data.entities.products };
+    }
+    case REMOVE_CARTPRODUCTS: {
+      const newState = {
+        ...state,
+      };
+      delete newState[action.data.productId];
+      return newState;
     }
     default:
       return state;
