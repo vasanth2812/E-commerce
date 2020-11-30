@@ -11,6 +11,7 @@ import { allproductsSelector } from '../../reducers/products';
 import './Products.scss';
 import api from '../../services/api';
 import { addCart } from '../../actions';
+import { allCartProductsId } from '../../reducers/cartProducts';
 
 const Products = ({ errors }) => {
   const dispatch = useDispatch();
@@ -18,6 +19,9 @@ const Products = ({ errors }) => {
   const [carterror, setCartError] = useState(false);
 
   const stateProductList = useSelector((state) => allproductsSelector(state));
+  const stateCartProducts = useSelector((state) => allCartProductsId(state));
+
+  console.log(stateCartProducts);
 
   useEffect(() => {
     setProducts(stateProductList);
@@ -53,7 +57,11 @@ const Products = ({ errors }) => {
         key={product.id}
         className="col-sm-12 col-md-4 col-lg-3 col-xs-3 mg-bottom-10"
       >
-        <ProductCard data={product} addWhislist={addWhislist} />
+        <ProductCard
+          data={product}
+          addWhislist={addWhislist}
+          addedToCart={stateCartProducts.includes(product.id.toString())}
+        />
       </div>
     );
   });

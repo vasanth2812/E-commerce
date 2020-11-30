@@ -10,7 +10,7 @@ import {
 import PropTypes from 'prop-types';
 import './ProductCard.scss';
 
-const ProductCard = ({ data, addWhislist }) => {
+const ProductCard = ({ data, addWhislist, addedToCart }) => {
   const addWhislistClick = (id) => {
     addWhislist(id);
   };
@@ -49,8 +49,9 @@ const ProductCard = ({ data, addWhislist }) => {
                   <Button
                     className="prd-btn"
                     onClick={() => addWhislistClick(data.id)}
+                    disabled={addedToCart ? 'disabled' : null}
                   >
-                    Add Cart
+                    {addedToCart ? `Added to cart` : `Add Cart`}
                   </Button>
                 </div>
               </>
@@ -73,6 +74,7 @@ ProductCard.propTypes = {
     description: PropTypes.string,
   }).isRequired,
   addWhislist: PropTypes.func.isRequired,
+  addedToCart: PropTypes.bool.isRequired,
 };
 
 export default ProductCard;

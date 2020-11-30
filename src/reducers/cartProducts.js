@@ -21,3 +21,8 @@ export const allcartProducts = createSelector(
   cartProductsSelector,
   (productsHash) => Object.values(productsHash)
 );
+
+export const allCartProductsId = createSelector(
+  cartProductsSelector,
+  (productsHash) => Object.keys(productsHash)
+);
